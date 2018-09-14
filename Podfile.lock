@@ -1,0 +1,24 @@
+PODS:
+  - GoogleWebRTC (1.1.24717)
+  - Unbox (3.0.0)
+  - Wrap (3.0.0)
+
+DEPENDENCIES:
+  - GoogleWebRTC
+  - Unbox
+  - Wrap
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GoogleWebRTC
+    - Unbox
+    - Wrap
+
+SPEC CHECKSUMS:
+  GoogleWebRTC: 80c5e7207527fa31b29e8ab813d68f761675ab62
+  Unbox: 9ed33b2a31f7a8a049f54b94d40c4a52a28c4d9d
+  Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
+
+PODFILE CHECKSUM: eaa3608528a4cb56512ee7a43b92fb002105d917
+
+COCOAPODS: 1.5.3

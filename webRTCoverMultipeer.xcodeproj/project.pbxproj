@@ -1,0 +1,736 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		60A18D80275A2F2436A399B3 /* Pods_webRTCoverMultipeerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D394DDB2B767082804C16AC /* Pods_webRTCoverMultipeerTests.framework */; };
+		69147812214BD83500A0E04B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69147811214BD83500A0E04B /* AppDelegate.swift */; };
+		69147817214BD83500A0E04B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69147815214BD83500A0E04B /* Main.storyboard */; };
+		69147819214BD83600A0E04B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69147818214BD83600A0E04B /* Assets.xcassets */; };
+		6914781C214BD83600A0E04B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6914781A214BD83600A0E04B /* LaunchScreen.storyboard */; };
+		69147827214BD83600A0E04B /* webRTCoverMultipeerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69147826214BD83600A0E04B /* webRTCoverMultipeerTests.swift */; };
+		69147832214BD83600A0E04B /* webRTCoverMultipeerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69147831214BD83600A0E04B /* webRTCoverMultipeerUITests.swift */; };
+		69147840214BDB1E00A0E04B /* MultipeerConnectivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6914783F214BDB1E00A0E04B /* MultipeerConnectivityViewController.swift */; };
+		69147842214BDB3200A0E04B /* WebRTCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69147841214BDB3200A0E04B /* WebRTCViewController.swift */; };
+		69147848214BDC0100A0E04B /* WebRTCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69147847214BDC0100A0E04B /* WebRTCDelegate.swift */; };
+		6914784A214BDC1F00A0E04B /* PeerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69147849214BDC1E00A0E04B /* PeerDelegate.swift */; };
+		6914784F214BE2F100A0E04B /* MultiPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6914784E214BE2F100A0E04B /* MultiPeer.swift */; };
+		6ECFFBF0610232DE63D1BBDC /* Pods_webRTCoverMultipeer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E356102A8897A4FEB66A43CD /* Pods_webRTCoverMultipeer.framework */; };
+		BE719DE0339F81EB1FFB4BBF /* Pods_webRTCoverMultipeerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B96CC01CA6793CDC245B2C5 /* Pods_webRTCoverMultipeerUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		69147823214BD83600A0E04B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69147806214BD83500A0E04B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6914780D214BD83500A0E04B;
+			remoteInfo = webRTCoverMultipeer;
+		};
+		6914782E214BD83600A0E04B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69147806214BD83500A0E04B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6914780D214BD83500A0E04B;
+			remoteInfo = webRTCoverMultipeer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05523473467E6935B1F28892 /* Pods-webRTCoverMultipeer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webRTCoverMultipeer.release.xcconfig"; path = "Pods/Target Support Files/Pods-webRTCoverMultipeer/Pods-webRTCoverMultipeer.release.xcconfig"; sourceTree = "<group>"; };
+		1B96CC01CA6793CDC245B2C5 /* Pods_webRTCoverMultipeerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webRTCoverMultipeerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		465893956EAA9559476F13AF /* Pods-webRTCoverMultipeerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webRTCoverMultipeerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-webRTCoverMultipeerTests/Pods-webRTCoverMultipeerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5768C3D29E456FF77839DC2B /* Pods-webRTCoverMultipeerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webRTCoverMultipeerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-webRTCoverMultipeerTests/Pods-webRTCoverMultipeerTests.release.xcconfig"; sourceTree = "<group>"; };
+		6914780E214BD83500A0E04B /* webRTCoverMultipeer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = webRTCoverMultipeer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69147811214BD83500A0E04B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		69147816214BD83500A0E04B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69147818214BD83600A0E04B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6914781B214BD83600A0E04B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6914781D214BD83600A0E04B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69147822214BD83600A0E04B /* webRTCoverMultipeerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = webRTCoverMultipeerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69147826214BD83600A0E04B /* webRTCoverMultipeerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webRTCoverMultipeerTests.swift; sourceTree = "<group>"; };
+		69147828214BD83600A0E04B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6914782D214BD83600A0E04B /* webRTCoverMultipeerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = webRTCoverMultipeerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69147831214BD83600A0E04B /* webRTCoverMultipeerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webRTCoverMultipeerUITests.swift; sourceTree = "<group>"; };
+		69147833214BD83600A0E04B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6914783F214BDB1E00A0E04B /* MultipeerConnectivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerConnectivityViewController.swift; sourceTree = "<group>"; };
+		69147841214BDB3200A0E04B /* WebRTCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCViewController.swift; sourceTree = "<group>"; };
+		69147847214BDC0100A0E04B /* WebRTCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCDelegate.swift; sourceTree = "<group>"; };
+		69147849214BDC1E00A0E04B /* PeerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerDelegate.swift; sourceTree = "<group>"; };
+		6914784E214BE2F100A0E04B /* MultiPeer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPeer.swift; sourceTree = "<group>"; };
+		8D394DDB2B767082804C16AC /* Pods_webRTCoverMultipeerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webRTCoverMultipeerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21E6721B7F2B62A081B6729 /* Pods-webRTCoverMultipeerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webRTCoverMultipeerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-webRTCoverMultipeerUITests/Pods-webRTCoverMultipeerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E356102A8897A4FEB66A43CD /* Pods_webRTCoverMultipeer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webRTCoverMultipeer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8ACAB368F5FB1D29188E271 /* Pods-webRTCoverMultipeerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webRTCoverMultipeerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-webRTCoverMultipeerUITests/Pods-webRTCoverMultipeerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FAD2A4EF3F15CF681A5D9968 /* Pods-webRTCoverMultipeer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webRTCoverMultipeer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-webRTCoverMultipeer/Pods-webRTCoverMultipeer.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6914780B214BD83500A0E04B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ECFFBF0610232DE63D1BBDC /* Pods_webRTCoverMultipeer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6914781F214BD83600A0E04B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60A18D80275A2F2436A399B3 /* Pods_webRTCoverMultipeerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6914782A214BD83600A0E04B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE719DE0339F81EB1FFB4BBF /* Pods_webRTCoverMultipeerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4E6FE7B8562C535E4FA4D91A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAD2A4EF3F15CF681A5D9968 /* Pods-webRTCoverMultipeer.debug.xcconfig */,
+				05523473467E6935B1F28892 /* Pods-webRTCoverMultipeer.release.xcconfig */,
+				465893956EAA9559476F13AF /* Pods-webRTCoverMultipeerTests.debug.xcconfig */,
+				5768C3D29E456FF77839DC2B /* Pods-webRTCoverMultipeerTests.release.xcconfig */,
+				E8ACAB368F5FB1D29188E271 /* Pods-webRTCoverMultipeerUITests.debug.xcconfig */,
+				B21E6721B7F2B62A081B6729 /* Pods-webRTCoverMultipeerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		69147805214BD83500A0E04B = {
+			isa = PBXGroup;
+			children = (
+				69147810214BD83500A0E04B /* webRTCoverMultipeer */,
+				69147825214BD83600A0E04B /* webRTCoverMultipeerTests */,
+				69147830214BD83600A0E04B /* webRTCoverMultipeerUITests */,
+				6914780F214BD83500A0E04B /* Products */,
+				4E6FE7B8562C535E4FA4D91A /* Pods */,
+				A553F21B81E73C67F7BBDE1D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6914780F214BD83500A0E04B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6914780E214BD83500A0E04B /* webRTCoverMultipeer.app */,
+				69147822214BD83600A0E04B /* webRTCoverMultipeerTests.xctest */,
+				6914782D214BD83600A0E04B /* webRTCoverMultipeerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69147810214BD83500A0E04B /* webRTCoverMultipeer */ = {
+			isa = PBXGroup;
+			children = (
+				6914784E214BE2F100A0E04B /* MultiPeer.swift */,
+				69147847214BDC0100A0E04B /* WebRTCDelegate.swift */,
+				69147849214BDC1E00A0E04B /* PeerDelegate.swift */,
+				69147811214BD83500A0E04B /* AppDelegate.swift */,
+				69147815214BD83500A0E04B /* Main.storyboard */,
+				69147818214BD83600A0E04B /* Assets.xcassets */,
+				6914781A214BD83600A0E04B /* LaunchScreen.storyboard */,
+				6914781D214BD83600A0E04B /* Info.plist */,
+				6914783F214BDB1E00A0E04B /* MultipeerConnectivityViewController.swift */,
+				69147841214BDB3200A0E04B /* WebRTCViewController.swift */,
+			);
+			path = webRTCoverMultipeer;
+			sourceTree = "<group>";
+		};
+		69147825214BD83600A0E04B /* webRTCoverMultipeerTests */ = {
+			isa = PBXGroup;
+			children = (
+				69147826214BD83600A0E04B /* webRTCoverMultipeerTests.swift */,
+				69147828214BD83600A0E04B /* Info.plist */,
+			);
+			path = webRTCoverMultipeerTests;
+			sourceTree = "<group>";
+		};
+		69147830214BD83600A0E04B /* webRTCoverMultipeerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				69147831214BD83600A0E04B /* webRTCoverMultipeerUITests.swift */,
+				69147833214BD83600A0E04B /* Info.plist */,
+			);
+			path = webRTCoverMultipeerUITests;
+			sourceTree = "<group>";
+		};
+		A553F21B81E73C67F7BBDE1D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E356102A8897A4FEB66A43CD /* Pods_webRTCoverMultipeer.framework */,
+				8D394DDB2B767082804C16AC /* Pods_webRTCoverMultipeerTests.framework */,
+				1B96CC01CA6793CDC245B2C5 /* Pods_webRTCoverMultipeerUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6914780D214BD83500A0E04B /* webRTCoverMultipeer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69147836214BD83600A0E04B /* Build configuration list for PBXNativeTarget "webRTCoverMultipeer" */;
+			buildPhases = (
+				DA34026B378F2295C086CE0C /* [CP] Check Pods Manifest.lock */,
+				6914780A214BD83500A0E04B /* Sources */,
+				6914780B214BD83500A0E04B /* Frameworks */,
+				6914780C214BD83500A0E04B /* Resources */,
+				E4FAF04B0A316AF9680DA95A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = webRTCoverMultipeer;
+			productName = webRTCoverMultipeer;
+			productReference = 6914780E214BD83500A0E04B /* webRTCoverMultipeer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		69147821214BD83600A0E04B /* webRTCoverMultipeerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69147839214BD83600A0E04B /* Build configuration list for PBXNativeTarget "webRTCoverMultipeerTests" */;
+			buildPhases = (
+				1C4987C4E89639B3B3721674 /* [CP] Check Pods Manifest.lock */,
+				6914781E214BD83600A0E04B /* Sources */,
+				6914781F214BD83600A0E04B /* Frameworks */,
+				69147820214BD83600A0E04B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				69147824214BD83600A0E04B /* PBXTargetDependency */,
+			);
+			name = webRTCoverMultipeerTests;
+			productName = webRTCoverMultipeerTests;
+			productReference = 69147822214BD83600A0E04B /* webRTCoverMultipeerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6914782C214BD83600A0E04B /* webRTCoverMultipeerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6914783C214BD83600A0E04B /* Build configuration list for PBXNativeTarget "webRTCoverMultipeerUITests" */;
+			buildPhases = (
+				57DBE17EAAACD3E477BE57E3 /* [CP] Check Pods Manifest.lock */,
+				69147829214BD83600A0E04B /* Sources */,
+				6914782A214BD83600A0E04B /* Frameworks */,
+				6914782B214BD83600A0E04B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6914782F214BD83600A0E04B /* PBXTargetDependency */,
+			);
+			name = webRTCoverMultipeerUITests;
+			productName = webRTCoverMultipeerUITests;
+			productReference = 6914782D214BD83600A0E04B /* webRTCoverMultipeerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		69147806214BD83500A0E04B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = ishikurakeisuke;
+				TargetAttributes = {
+					6914780D214BD83500A0E04B = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					69147821214BD83600A0E04B = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 6914780D214BD83500A0E04B;
+					};
+					6914782C214BD83600A0E04B = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 6914780D214BD83500A0E04B;
+					};
+				};
+			};
+			buildConfigurationList = 69147809214BD83500A0E04B /* Build configuration list for PBXProject "webRTCoverMultipeer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 69147805214BD83500A0E04B;
+			productRefGroup = 6914780F214BD83500A0E04B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6914780D214BD83500A0E04B /* webRTCoverMultipeer */,
+				69147821214BD83600A0E04B /* webRTCoverMultipeerTests */,
+				6914782C214BD83600A0E04B /* webRTCoverMultipeerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6914780C214BD83500A0E04B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6914781C214BD83600A0E04B /* LaunchScreen.storyboard in Resources */,
+				69147819214BD83600A0E04B /* Assets.xcassets in Resources */,
+				69147817214BD83500A0E04B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69147820214BD83600A0E04B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6914782B214BD83600A0E04B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C4987C4E89639B3B3721674 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-webRTCoverMultipeerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57DBE17EAAACD3E477BE57E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-webRTCoverMultipeerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA34026B378F2295C086CE0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-webRTCoverMultipeer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4FAF04B0A316AF9680DA95A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-webRTCoverMultipeer/Pods-webRTCoverMultipeer-frameworks.sh",
+				"${PODS_ROOT}/GoogleWebRTC/Frameworks/frameworks/WebRTC.framework",
+				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
+				"${BUILT_PRODUCTS_DIR}/Wrap/Wrap.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wrap.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-webRTCoverMultipeer/Pods-webRTCoverMultipeer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6914780A214BD83500A0E04B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69147848214BDC0100A0E04B /* WebRTCDelegate.swift in Sources */,
+				6914784A214BDC1F00A0E04B /* PeerDelegate.swift in Sources */,
+				69147812214BD83500A0E04B /* AppDelegate.swift in Sources */,
+				69147840214BDB1E00A0E04B /* MultipeerConnectivityViewController.swift in Sources */,
+				69147842214BDB3200A0E04B /* WebRTCViewController.swift in Sources */,
+				6914784F214BE2F100A0E04B /* MultiPeer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6914781E214BD83600A0E04B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69147827214BD83600A0E04B /* webRTCoverMultipeerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69147829214BD83600A0E04B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69147832214BD83600A0E04B /* webRTCoverMultipeerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		69147824214BD83600A0E04B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6914780D214BD83500A0E04B /* webRTCoverMultipeer */;
+			targetProxy = 69147823214BD83600A0E04B /* PBXContainerItemProxy */;
+		};
+		6914782F214BD83600A0E04B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6914780D214BD83500A0E04B /* webRTCoverMultipeer */;
+			targetProxy = 6914782E214BD83600A0E04B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		69147815214BD83500A0E04B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				69147816214BD83500A0E04B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6914781A214BD83600A0E04B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6914781B214BD83600A0E04B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		69147834214BD83600A0E04B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		69147835214BD83600A0E04B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		69147837214BD83600A0E04B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAD2A4EF3F15CF681A5D9968 /* Pods-webRTCoverMultipeer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5L7C59W6XV;
+				INFOPLIST_FILE = webRTCoverMultipeer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mypace.webRTCoverMultipeer.webRTCoverMultipeer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		69147838214BD83600A0E04B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05523473467E6935B1F28892 /* Pods-webRTCoverMultipeer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5L7C59W6XV;
+				INFOPLIST_FILE = webRTCoverMultipeer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mypace.webRTCoverMultipeer.webRTCoverMultipeer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6914783A214BD83600A0E04B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 465893956EAA9559476F13AF /* Pods-webRTCoverMultipeerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5L7C59W6XV;
+				INFOPLIST_FILE = webRTCoverMultipeerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mypace.webRTCoverMultipeer.webRTCoverMultipeerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/webRTCoverMultipeer.app/webRTCoverMultipeer";
+			};
+			name = Debug;
+		};
+		6914783B214BD83600A0E04B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5768C3D29E456FF77839DC2B /* Pods-webRTCoverMultipeerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5L7C59W6XV;
+				INFOPLIST_FILE = webRTCoverMultipeerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mypace.webRTCoverMultipeer.webRTCoverMultipeerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/webRTCoverMultipeer.app/webRTCoverMultipeer";
+			};
+			name = Release;
+		};
+		6914783D214BD83600A0E04B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8ACAB368F5FB1D29188E271 /* Pods-webRTCoverMultipeerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5L7C59W6XV;
+				INFOPLIST_FILE = webRTCoverMultipeerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mypace.webRTCoverMultipeer.webRTCoverMultipeerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = webRTCoverMultipeer;
+			};
+			name = Debug;
+		};
+		6914783E214BD83600A0E04B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B21E6721B7F2B62A081B6729 /* Pods-webRTCoverMultipeerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5L7C59W6XV;
+				INFOPLIST_FILE = webRTCoverMultipeerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.mypace.webRTCoverMultipeer.webRTCoverMultipeerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = webRTCoverMultipeer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		69147809214BD83500A0E04B /* Build configuration list for PBXProject "webRTCoverMultipeer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69147834214BD83600A0E04B /* Debug */,
+				69147835214BD83600A0E04B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69147836214BD83600A0E04B /* Build configuration list for PBXNativeTarget "webRTCoverMultipeer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69147837214BD83600A0E04B /* Debug */,
+				69147838214BD83600A0E04B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69147839214BD83600A0E04B /* Build configuration list for PBXNativeTarget "webRTCoverMultipeerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6914783A214BD83600A0E04B /* Debug */,
+				6914783B214BD83600A0E04B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6914783C214BD83600A0E04B /* Build configuration list for PBXNativeTarget "webRTCoverMultipeerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6914783D214BD83600A0E04B /* Debug */,
+				6914783E214BD83600A0E04B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 69147806214BD83500A0E04B /* Project object */;
+}

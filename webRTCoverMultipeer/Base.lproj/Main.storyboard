@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Multipeer Connectivity View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MultipeerConnectivityViewController" customModule="webRTCoverMultipeer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PxB-8b-fm9">
+                                <rect key="frame" x="75.5" y="283.5" width="224.5" height="100.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multipeer Connectivityで接続" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZS-q2-Mhd">
+                                        <rect key="frame" x="0.0" y="0.0" width="224.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nk-2S-CCB">
+                                        <rect key="frame" x="66" y="30.5" width="93" height="30"/>
+                                        <state key="normal" title="browsing開始"/>
+                                        <connections>
+                                            <action selector="pushBrowsingBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NbI-a1-z1q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rm-wh-Pmd">
+                                        <rect key="frame" x="59" y="70.5" width="107" height="30"/>
+                                        <state key="normal" title="advertising開始"/>
+                                        <connections>
+                                            <action selector="pushAdvertisingBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qjy-gd-a8P"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PxB-8b-fm9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E3Z-Nv-arE"/>
+                            <constraint firstItem="PxB-8b-fm9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gsC-Ai-5Ut"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <segue destination="AXS-0T-HuS" kind="show" identifier="toNextPage" id="F5H-7f-bON"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--WebRTC View Controller-->
+        <scene sceneID="guk-PM-c0X">
+            <objects>
+                <viewController id="AXS-0T-HuS" customClass="WebRTCViewController" customModule="webRTCoverMultipeer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="212-8M-LYZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aSB-rc-J70">
+                                <rect key="frame" x="0.0" y="467" width="76" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhk-Tf-hpL">
+                                        <rect key="frame" x="10" y="0.0" width="56" height="30"/>
+                                        <state key="normal" title="connect"/>
+                                        <connections>
+                                            <action selector="pushConnectBtn:" destination="AXS-0T-HuS" eventType="touchUpInside" id="LPU-f4-LfX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dF-4P-g6h">
+                                        <rect key="frame" x="0.0" y="30" width="76" height="30"/>
+                                        <state key="normal" title="disconnect"/>
+                                        <connections>
+                                            <action selector="pushDisconnectBtn:" destination="AXS-0T-HuS" eventType="touchUpInside" id="okd-Qk-WJs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPu-Hm-mjc" customClass="RTCEAGLVideoView">
+                                <rect key="frame" x="0.0" y="29" width="339" height="330"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39A-mH-9ZD" customClass="RTCCameraPreviewView">
+                                <rect key="frame" x="135" y="457" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="AYe-gW-9TS"/>
+                    </view>
+                    <connections>
+                        <outlet property="localView" destination="39A-mH-9ZD" id="QHM-TG-xdX"/>
+                        <outlet property="remoteView" destination="JPu-Hm-mjc" id="yet-aF-LjW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o3B-KY-mQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1365.5999999999999" y="33.733133433283363"/>
+        </scene>
+    </scenes>
+</document>
