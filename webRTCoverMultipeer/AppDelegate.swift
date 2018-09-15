@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         peerUtil = PeerUtil()
-        peerUtil?.setting(displayName: "peerName", serviceType: "peerType")
+        peerUtil?.setting(displayName: "peerName2", serviceType: "peerType")
         
         return true
     }

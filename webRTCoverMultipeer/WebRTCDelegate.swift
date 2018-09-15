@@ -27,7 +27,7 @@ class WebrtcUtil: NSObject {
     var delegate:WebrtcDelegate?
     var localStream:RTCMediaStream?
     var unusedICECandidates:[RTCIceCandidate] = []
-    var initiator = true
+    var initiator = false
     
     override init() {
         super.init()
@@ -67,19 +67,19 @@ class WebrtcUtil: NSObject {
         }
         
         if self.initiator {
-            
+
             self.createOffer()
-            
+
         } else {
-            
+
             print("pass1")
             self.peerConnection!.setRemoteDescription(self.remoteSDP!) { (error) in
                 print("pass3")
                 self.setSessionDescription(error: error)
             }
-            
+
         }
-        
+
     }
     
     func startWebrtcConnection(){

@@ -18,21 +18,22 @@ class WebRTCViewController: UIViewController {
     var   remoteVideoTrack:RTCVideoTrack?;
     //var   localVideoSize:CGSize?;
     //var   remoteVideoSize:CGSize?;
-    let   webrtcUtil = WebrtcUtil()
+    var webrtcUtil:WebrtcUtil!
+    var peerUtil:PeerUtil!
     
-    var peerUtil = PeerUtil.app()
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        webrtcUtil = WebrtcUtil()
+        webrtcUtil.delegate = self
+        peerUtil = PeerUtil.app()
+        peerUtil.delegate = self
+        
     }
 
     @IBAction func pushConnectBtn(_ sender: Any) {
         
-        webrtcUtil.delegate = self
         webrtcUtil.startWebrtcConnection()
         remoteView?.delegate = self
-        
-        peerUtil?.delegate = self
         
     }
     @IBAction func pushDisconnectBtn(_ sender: Any) {

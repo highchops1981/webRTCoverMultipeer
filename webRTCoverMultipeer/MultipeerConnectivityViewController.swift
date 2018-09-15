@@ -10,24 +10,24 @@ import UIKit
 
 class MultipeerConnectivityViewController: UIViewController {
     
-    var peerUtil = PeerUtil.app()
+    var peerUtil:PeerUtil!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        peerUtil?.delegate = self
-        
+        peerUtil = PeerUtil.app()
+        peerUtil.delegate = self
+
     }
     
     @IBAction func pushBrowsingBtn(_ sender: Any) {
         
-        peerUtil?.browsering()
+        peerUtil.browsering()
         
     }
     
     @IBAction func pushAdvertisingBtn(_ sender: Any) {
         
-        peerUtil?.advertise()
+        peerUtil.advertise()
         
     }
     

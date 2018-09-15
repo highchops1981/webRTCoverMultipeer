@@ -1,8 +1,10 @@
 import Foundation
 import MultipeerConnectivity
 import AVFoundation
-import Unbox
+
+
 import Wrap
+import Unbox
 
 protocol PeerDelegate {
     
@@ -17,7 +19,6 @@ protocol PeerDelegate {
 }
 
 extension PeerDelegate {
-    
     
     func peerFound(displayName:String) {}
     func peerConnected(displayName:String) {}
@@ -40,8 +41,8 @@ class PeerUtil:NSObject {
     var peerId: MCPeerID? = nil
     var remotePeerId : MCPeerID? = nil
     var session: MCSession? = nil
-    //var advertiserAssistant: MCAdvertiserAssistant? = nil
-    var advertiserNearby: MCNearbyServiceAdvertiser? = nil
+    var advertiserAssistant: MCAdvertiserAssistant? = nil
+    //var advertiserNearby: MCNearbyServiceAdvertiser? = nil
     var browser: MCNearbyServiceBrowser? = nil
     var nowConnect: Bool {
         get {
@@ -74,8 +75,8 @@ class PeerUtil:NSObject {
         self.serviceType = serviceType
         peerId = MCPeerID(displayName: self.displayName)
         session = MCSession(peer: self.peerId!, securityIdentity: nil, encryptionPreference: .optional)
-        //advertiserAssistant = MCAdvertiserAssistant(serviceType: self.serviceType, discoveryInfo: nil, session: self.session!)
-        advertiserNearby = MCNearbyServiceAdvertiser(peer: peerId!, discoveryInfo: nil, serviceType: self.serviceType)
+        advertiserAssistant = MCAdvertiserAssistant(serviceType: self.serviceType, discoveryInfo: nil, session: self.session!)
+        //advertiserNearby = MCNearbyServiceAdvertiser(peer: peerId!, discoveryInfo: nil, serviceType: self.serviceType)
         browser = MCNearbyServiceBrowser(peer: self.peerId!, serviceType: self.serviceType)
         
     }
@@ -83,10 +84,10 @@ class PeerUtil:NSObject {
     func advertise() {
         
         session?.delegate = self
-//        advertiserAssistant?.delegate = self
-//        advertiserAssistant?.start()
-        advertiserNearby?.delegate = self
-        advertiserNearby?.startAdvertisingPeer()
+        advertiserAssistant?.delegate = self
+        advertiserAssistant?.start()
+//        advertiserNearby?.delegate = self
+//        advertiserNearby?.startAdvertisingPeer()
         
     }
     
@@ -100,8 +101,8 @@ class PeerUtil:NSObject {
     
     func stopAdvertise() {
         
-        //advertiserAssistant?.stop()
-        advertiserNearby?.stopAdvertisingPeer()
+        advertiserAssistant?.stop()
+        //advertiserNearby?.stopAdvertisingPeer()
         
     }
     
@@ -253,4 +254,15 @@ extension PeerUtil: MCSessionDelegate {
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
     }
     
+}
+
+extension PeerUtil: MCAdvertiserAssistantDelegate {
+    
+    
+//    optional public func advertiserAssistantWillPresentInvitation(_ advertiserAssistant: MCAdvertiserAssistant)
+//
+//
+//    // An invitation was dismissed from screen.
+//    @available(iOS 7.0, *)
+//    optional public func advertiserAssistantDidDismissInvitation(_ advertiserAssistant: MCAdvertiserAssistant)
 }

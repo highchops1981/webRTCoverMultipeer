@@ -19,6 +19,11 @@
 		69147848214BDC0100A0E04B /* WebRTCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69147847214BDC0100A0E04B /* WebRTCDelegate.swift */; };
 		6914784A214BDC1F00A0E04B /* PeerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69147849214BDC1E00A0E04B /* PeerDelegate.swift */; };
 		6914784F214BE2F100A0E04B /* MultiPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6914784E214BE2F100A0E04B /* MultiPeer.swift */; };
+		691640F4214D74E300EAF8C6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 691640F3214D74E300EAF8C6 /* libsqlite3.0.tbd */; };
+		691640F6214D750000EAF8C6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 691640F5214D750000EAF8C6 /* libc++.tbd */; };
+		691640F8214D754F00EAF8C6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691640F7214D754F00EAF8C6 /* CoreVideo.framework */; };
+		691640FA214D75C000EAF8C6 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691640F9214D75C000EAF8C6 /* VideoToolbox.framework */; };
+		691640FC214D760E00EAF8C6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691640FB214D760E00EAF8C6 /* SystemConfiguration.framework */; };
 		6ECFFBF0610232DE63D1BBDC /* Pods_webRTCoverMultipeer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E356102A8897A4FEB66A43CD /* Pods_webRTCoverMultipeer.framework */; };
 		BE719DE0339F81EB1FFB4BBF /* Pods_webRTCoverMultipeerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B96CC01CA6793CDC245B2C5 /* Pods_webRTCoverMultipeerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +67,12 @@
 		69147847214BDC0100A0E04B /* WebRTCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCDelegate.swift; sourceTree = "<group>"; };
 		69147849214BDC1E00A0E04B /* PeerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeerDelegate.swift; sourceTree = "<group>"; };
 		6914784E214BE2F100A0E04B /* MultiPeer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPeer.swift; sourceTree = "<group>"; };
+		691640F1214D716200EAF8C6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		691640F3214D74E300EAF8C6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		691640F5214D750000EAF8C6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		691640F7214D754F00EAF8C6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		691640F9214D75C000EAF8C6 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		691640FB214D760E00EAF8C6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8D394DDB2B767082804C16AC /* Pods_webRTCoverMultipeerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webRTCoverMultipeerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21E6721B7F2B62A081B6729 /* Pods-webRTCoverMultipeerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webRTCoverMultipeerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-webRTCoverMultipeerUITests/Pods-webRTCoverMultipeerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E356102A8897A4FEB66A43CD /* Pods_webRTCoverMultipeer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webRTCoverMultipeer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +85,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				691640FC214D760E00EAF8C6 /* SystemConfiguration.framework in Frameworks */,
+				691640FA214D75C000EAF8C6 /* VideoToolbox.framework in Frameworks */,
+				691640F8214D754F00EAF8C6 /* CoreVideo.framework in Frameworks */,
+				691640F6214D750000EAF8C6 /* libc++.tbd in Frameworks */,
+				691640F4214D74E300EAF8C6 /* libsqlite3.0.tbd in Frameworks */,
 				6ECFFBF0610232DE63D1BBDC /* Pods_webRTCoverMultipeer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +186,12 @@
 		A553F21B81E73C67F7BBDE1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				691640FB214D760E00EAF8C6 /* SystemConfiguration.framework */,
+				691640F9214D75C000EAF8C6 /* VideoToolbox.framework */,
+				691640F7214D754F00EAF8C6 /* CoreVideo.framework */,
+				691640F5214D750000EAF8C6 /* libc++.tbd */,
+				691640F3214D74E300EAF8C6 /* libsqlite3.0.tbd */,
+				691640F1214D716200EAF8C6 /* AVFoundation.framework */,
 				E356102A8897A4FEB66A43CD /* Pods_webRTCoverMultipeer.framework */,
 				8D394DDB2B767082804C16AC /* Pods_webRTCoverMultipeerTests.framework */,
 				1B96CC01CA6793CDC245B2C5 /* Pods_webRTCoverMultipeerUITests.framework */,

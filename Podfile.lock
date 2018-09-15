@@ -1,5 +1,5 @@
 PODS:
-  - GoogleWebRTC (1.1.24717)
+  - GoogleWebRTC (1.1.24595)
   - Unbox (3.0.0)
   - Wrap (3.0.0)
 
@@ -15,7 +15,7 @@ SPEC REPOS:
     - Wrap
 
 SPEC CHECKSUMS:
-  GoogleWebRTC: 80c5e7207527fa31b29e8ab813d68f761675ab62
+  GoogleWebRTC: 2016919e936e34010b9522d0420c21dec62bb659
   Unbox: 9ed33b2a31f7a8a049f54b94d40c4a52a28c4d9d
   Wrap: 918fdb5157e4f701f9503b2633752d6f94616f84
 
