@@ -52,7 +52,7 @@ struct MultiPeer {
     // webRTC disconnect
     init(disconnectWebRTC: [String:String]) {
         
-        self.dataType = MultiPeerDataType.disconnectOfWebRTC.rawValue
+        self.dataType = MultiPeerDataType.disconnectOfWebRTC.rawValue 
         self.disconnectWebRTC = disconnectWebRTC
         
     }

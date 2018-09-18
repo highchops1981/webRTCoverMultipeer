@@ -15,6 +15,9 @@ protocol PeerDelegate {
     func receivedAnswer(data:MultiPeer)
     func receivedCandidate(data:MultiPeer)
     func receivedDisconnected(data:MultiPeer)
+    func receivedOffer2(dictionary:[String: Any])
+    func receivedAnswer2(dictionary:[String: Any])
+    func receivedCandidate2(dictionary:[String: Any])
     
 }
 
@@ -27,7 +30,10 @@ extension PeerDelegate {
     func receivedAnswer(data:MultiPeer) {}
     func receivedCandidate(data:MultiPeer) {}
     func receivedDisconnected(data:MultiPeer) {}
-    
+    func receivedOffer2(dictionary:[String: Any]) {}
+    func receivedAnswer2(dictionary:[String: Any]) {}
+    func receivedCandidate2(dictionary:[String: Any]) {}
+
 }
 
 class PeerUtil:NSObject {
@@ -134,8 +140,22 @@ class PeerUtil:NSObject {
         if JSONSerialization.isValidJSONObject(wrappedDictionary) {
             
             let serializationData: Data = try! JSONSerialization.data(withJSONObject: wrappedDictionary, options: JSONSerialization.WritingOptions.prettyPrinted)
+            print("serializationData\(serializationData)")
             
             try? session?.send(serializationData, toPeers: (session?.connectedPeers)!, with: .reliable)
+            
+        }
+        
+    }
+    
+    func send2(json:Dictionary<String,Any>) {
+        
+        print("send2")
+        print(json)
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
+            try? session?.send(jsonData, toPeers: (session?.connectedPeers)!, with: .reliable)
+        } catch {
             
         }
         
@@ -215,33 +235,56 @@ extension PeerUtil: MCSessionDelegate {
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
+        let responseString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)! as String
+        let responseData = responseString.data(using: String.Encoding.utf8)
         do {
-            
-            let dic = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            let model: MultiPeer = try unbox(dictionary: dic!)
-            switch model.dataType {
-            case MultiPeerDataType.offerOfWebRTC.rawValue:
-                
-                delegate?.receivedOffer(data: model)
-                
-            case MultiPeerDataType.answerOfWebRTC.rawValue:
-                
-                delegate?.receivedAnswer(data: model)
-                
-            case MultiPeerDataType.candidateOfWebRTC.rawValue:
-                
-                delegate?.receivedCandidate(data: model)
-                
-            case MultiPeerDataType.disconnectOfWebRTC.rawValue:
-
-                delegate?.receivedDisconnected(data: model)
-                
-            default: break
+            let dictionary = try JSONSerialization.jsonObject(with: responseData!, options: []) as? [String: Any]
+            let keyValue = dictionary?.keys.first
+            switch keyValue {
+            case "offerSDP":
+                let value = dictionary!["offerSDP"] as? [String: Any]
+                print("pass2\(String(describing: value))")
+                delegate?.receivedOffer2(dictionary: value!)
+            case "answerSDP":
+                let value = dictionary!["answerSDP"] as? [String: Any]
+                delegate?.receivedAnswer2(dictionary: value!)
+            case "iceCandidate":
+                let value = dictionary!["iceCandidate"] as? [String: Any]
+                delegate?.receivedCandidate2(dictionary: value!)
+            default:
+                break
             }
-            
-            
         } catch {
+            
         }
+        
+//        do {
+//
+//            let dic = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+//            let model: MultiPeer = try unbox(dictionary: dic!)
+//            switch model.dataType {
+//            case MultiPeerDataType.offerOfWebRTC.rawValue:
+//
+//                delegate?.receivedOffer(data: model)
+//
+//            case MultiPeerDataType.answerOfWebRTC.rawValue:
+//
+//                delegate?.receivedAnswer(data: model)
+//
+//            case MultiPeerDataType.candidateOfWebRTC.rawValue:
+//
+//                delegate?.receivedCandidate(data: model)
+//
+//            case MultiPeerDataType.disconnectOfWebRTC.rawValue:
+//
+//                delegate?.receivedDisconnected(data: model)
+//
+//            default: break
+//            }
+//
+//
+//        } catch {
+//        }
         
     }
     

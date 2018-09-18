@@ -11,6 +11,7 @@ protocol WebrtcDelegate {
     func iceCandidatesCreated(candidate:RTCIceCandidate)
     func dataReceivedInChannel(data:NSData)
     func setLocalView(session: AVCaptureSession)
+    func setRemoteVideoTrack(videoTrack: RTCVideoTrack)
     
 }
 
@@ -31,29 +32,36 @@ class WebrtcUtil: NSObject {
     
     override init() {
         super.init()
-//        peerConnectionFactory = RTCPeerConnectionFactory.init()
-//        let iceServer = RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302"])
-//        let configuration = RTCConfiguration.init()
-//        configuration.iceServers = [iceServer]
-//        let constraints = RTCMediaConstraints.init(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: ["DtlsSrtpKeyAgreement" : "true"])
-//        peerConnection = peerConnectionFactory?.peerConnection(with: configuration, constraints: constraints, delegate: self)
-    }
-    
-    func addLocalMediaStream(){
-        
         peerConnectionFactory = RTCPeerConnectionFactory.init()
         let iceServer = RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302"])
         let configuration = RTCConfiguration.init()
         configuration.iceServers = [iceServer]
+        configuration.sdpSemantics = RTCSdpSemantics.unifiedPlan
+        configuration.certificate = RTCCertificate.generate(withParams: ["expires":10000,"name":"RSASSA-PKCS1-v1_5"])
         //let constraints = RTCMediaConstraints.init(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: ["DtlsSrtpKeyAgreement" : "true"])
         let constraints = RTCMediaConstraints.init(mandatoryConstraints: nil, optionalConstraints: nil)
         peerConnection = peerConnectionFactory?.peerConnection(with: configuration, constraints: constraints, delegate: self)
+    }
+    
+    func addLocalMediaStream(){
+        
+        print("addLocalMediaStream")
+
         
         videoSource = self.peerConnectionFactory?.videoSource()
         localVideoTrack = self.peerConnectionFactory?.videoTrack(with: self.videoSource!, trackId: "ARDAMSv0")
-        localStream = peerConnectionFactory?.mediaStream(withStreamId: "ARDAMS")
-        localStream?.addVideoTrack(localVideoTrack!)
-        peerConnection?.add(localStream!)
+//        localStream = peerConnectionFactory?.mediaStream(withStreamId: "ARDAMS")
+//        localStream?.addVideoTrack(localVideoTrack!)
+//        peerConnection?.add(localStream!)
+        peerConnection?.add(localVideoTrack!, streamIds: ["ARDAMS"])
+        
+        for transceiver in (peerConnection?.transceivers)! {
+            print("pass10")
+            if transceiver.mediaType == RTCRtpMediaType.video {
+                print("pass10")
+                delegate?.setRemoteVideoTrack(videoTrack: transceiver.receiver.track as! RTCVideoTrack)
+            }
+        }
 
         videoCapturer = RTCCameraVideoCapturer(delegate: self)
         let captureDevices = RTCCameraVideoCapturer.captureDevices()
@@ -72,9 +80,8 @@ class WebrtcUtil: NSObject {
 
         } else {
 
-            print("pass1")
+            print("self.remoteSDP\(String(describing: self.remoteSDP))")
             self.peerConnection!.setRemoteDescription(self.remoteSDP!) { (error) in
-                print("pass3")
                 self.setSessionDescription(error: error)
             }
 
@@ -92,7 +99,7 @@ class WebrtcUtil: NSObject {
     }
     
     func createOffer(){
-        let offerContratints =  RTCMediaConstraints(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: nil)
+        let offerContratints = RTCMediaConstraints(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: nil)
         self.peerConnection?.offer(for: offerContratints) { (sdp, error) in
             self.peerConnection(didCreateSessionDescription: sdp, error: error)
         }
@@ -131,7 +138,7 @@ class WebrtcUtil: NSObject {
     }
     
     func peerConnection(didCreateSessionDescription sdp: RTCSessionDescription!, error: Error!) {
-        print("didCreateSessionDescription<##>")
+        print("didCreateSessionDescription")
         if let er = error {
             print(er.localizedDescription)
         }
@@ -194,7 +201,7 @@ extension WebrtcUtil: RTCPeerConnectionDelegate {
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
         print("PEER CONNECTION:- didAdd stream")
-        self.delegate?.remoteStreamAvailable(stream: stream)
+        //self.delegate?.remoteStreamAvailable(stream: stream)
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
@@ -208,7 +215,7 @@ extension WebrtcUtil: RTCPeerConnectionDelegate {
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didAdd rtpReceiver: RTCRtpReceiver, streams mediaStreams: [RTCMediaStream]) {
         print("PEER CONNECTION:- didAdd rtpReceiver")
-        self.delegate?.remoteStreamAvailable(stream: mediaStreams.first!)
+        //self.delegate?.remoteStreamAvailable(stream: mediaStreams.first!)
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didRemove rtpReceiver: RTCRtpReceiver) {

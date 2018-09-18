@@ -13,7 +13,7 @@ class WebRTCViewController: UIViewController {
     
     //webrtc
     @IBOutlet weak var localView: RTCCameraPreviewView!
-    @IBOutlet weak var remoteView: RTCEAGLVideoView!
+    @IBOutlet weak var remoteView: RTCMTLVideoView!
     //var   localVideoTrack:RTCVideoTrack?;
     var   remoteVideoTrack:RTCVideoTrack?;
     //var   localVideoSize:CGSize?;
@@ -41,6 +41,30 @@ class WebRTCViewController: UIViewController {
 }
 
 extension WebRTCViewController: PeerDelegate {
+    func receivedOffer2(dictionary:[String: Any]) {
+        let sdp = dictionary["sdp"] as! String
+        print("pass4\(sdp)")
+        print("RTCSdpType.offer\(RTCSdpType.offer)")
+        let offerSDP = RTCSessionDescription.init(type: RTCSdpType.offer, sdp: sdp)
+        print("pass3\(offerSDP)")
+        self.webrtcUtil.remoteSDP = offerSDP
+        self.webrtcUtil.createAnswer()
+    }
+    
+    func receivedAnswer2(dictionary:[String: Any]) {
+        let sdp = dictionary["sdp"] as! String
+        let answerSDP = RTCSessionDescription.init(type: RTCSdpType.answer, sdp: sdp)
+        self.webrtcUtil.remoteSDP = answerSDP
+        self.webrtcUtil.setAnswerSDP()
+    }
+    
+    func receivedCandidate2(dictionary:[String: Any]) {
+        let description = dictionary["candidate"] as! String
+        let sdpMLineIndex = dictionary["sdpMLineIndex"] as! Int32
+        let sdpMid = dictionary["sdpMid"] as! String
+        let iceCandidate = RTCIceCandidate.init(sdp: description, sdpMLineIndex: sdpMLineIndex, sdpMid: sdpMid)
+        self.webrtcUtil.setICECandidates(iceCandidate: iceCandidate)
+    }
     
     func receivedOffer(data:MultiPeer) {
         print("receivedOffer")
@@ -96,6 +120,16 @@ extension WebRTCViewController: WebrtcDelegate {
         }
         
     }
+    
+    func setRemoteVideoTrack(videoTrack: RTCVideoTrack) {
+        print("videoTrack\(videoTrack)")
+        DispatchQueue.main.async {
+            self.remoteVideoTrack = videoTrack
+            self.remoteView.renderFrame(nil)
+            self.remoteVideoTrack?.add(self.remoteView)            
+        }
+        
+    }
 
     func remoteStreamAvailable(stream: RTCMediaStream) {
         print("remoteStreamAvailable\(stream.videoTracks.count)");
@@ -118,21 +152,49 @@ extension WebRTCViewController: WebrtcDelegate {
         }
     }
     
-    func offerSDPCreated(sdp:RTCSessionDescription){
-        print("pass0\(sdp)")
-        let peerSignage = MultiPeer(offerSdp: ["offerSDP":sdp.sdp])
-        peerUtil?.send(peerSignage: peerSignage)
+    func offerSDPCreated(sdp:RTCSessionDescription) {
+        //let peerSignage = MultiPeer(offerSdp: ["offerSDP":sdp.sdp])
+        //peerUtil?.send(peerSignage: peerSignage)
+        
+        let dic = [
+            "type":"offer",
+            "sdp":sdp.sdp
+        ] as [String : Any]
+        
+        let json = ["offerSDP":dic]
+        peerUtil?.send2(json: json)
+        
     }
     
     func answerSDPCreated(sdp:RTCSessionDescription){
-        let peerSignage = MultiPeer(answerSdp: ["answerSDP":sdp.sdp])
-        peerUtil?.send(peerSignage: peerSignage)
+//        let peerSignage = MultiPeer(answerSdp: ["answerSDP":sdp.sdp])
+//        peerUtil?.send(peerSignage: peerSignage)
+        
+        let dic = [
+            "type":"answer",
+            "sdp":sdp.sdp
+        ] as [String : Any]
+        
+        let json = ["answerSDP":dic]
+        peerUtil?.send2(json: json)
     }
     
     func iceCandidatesCreated(candidate:RTCIceCandidate){
         print("iceCandidatesCreated\(candidate)")
-        let peerSignage = MultiPeer(candidateSdp: ["iceCandidate":candidate.sdp,"sdpMid":candidate.sdpMid!,"sdpMLineIndex":candidate.sdpMLineIndex])
-        peerUtil?.send(peerSignage: peerSignage)
+//        let peerSignage = MultiPeer(candidateSdp: ["iceCandidate":candidate.sdp,"sdpMid":candidate.sdpMid!,"sdpMLineIndex":candidate.sdpMLineIndex])
+//        peerUtil?.send(peerSignage: peerSignage)
+        
+        let adpMid = candidate.sdpMid!
+        
+        let dic = [
+            "type":"candidate",
+            "sdpMLineIndex":candidate.sdpMLineIndex,
+            "sdpMid":adpMid,
+            "candidate":candidate.sdp
+        ] as [String : Any]
+        
+        let json = ["iceCandidate":dic]
+        peerUtil?.send2(json: json)
     }
     
     func sendDisconnectToPeer(){
