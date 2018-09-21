@@ -86,7 +86,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPu-Hm-mjc" customClass="RTCEAGLVideoView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPu-Hm-mjc">
                                 <rect key="frame" x="0.0" y="29" width="339" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,7 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="localView" destination="39A-mH-9ZD" id="QHM-TG-xdX"/>
-                        <outlet property="remoteView" destination="JPu-Hm-mjc" id="yet-aF-LjW"/>
+                        <outlet property="remoteView" destination="JPu-Hm-mjc" id="IeN-dg-3dW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3B-KY-mQ4" userLabel="First Responder" sceneMemberID="firstResponder"/>

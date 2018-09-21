@@ -13,9 +13,10 @@ class WebRTCViewController: UIViewController {
     
     //webrtc
     @IBOutlet weak var localView: RTCCameraPreviewView!
-    @IBOutlet weak var remoteView: RTCMTLVideoView!
+    @IBOutlet weak var remoteView: UIView!
     //var   localVideoTrack:RTCVideoTrack?;
-    var   remoteVideoTrack:RTCVideoTrack?;
+    var remoteVideoTrack:RTCVideoTrack?
+    var remoteVideoView:RTCMTLVideoView?
     //var   localVideoSize:CGSize?;
     //var   remoteVideoSize:CGSize?;
     var webrtcUtil:WebrtcUtil!
@@ -33,7 +34,7 @@ class WebRTCViewController: UIViewController {
     @IBAction func pushConnectBtn(_ sender: Any) {
         
         webrtcUtil.startWebrtcConnection()
-        remoteView?.delegate = self
+        remoteVideoView?.delegate = self
         
     }
     @IBAction func pushDisconnectBtn(_ sender: Any) {
@@ -108,6 +109,7 @@ extension WebRTCViewController: RTCEAGLVideoViewDelegate {
     
     func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
         
+        print("didChangeVideoSize")
     }
 }
 
@@ -125,8 +127,8 @@ extension WebRTCViewController: WebrtcDelegate {
         print("videoTrack\(videoTrack)")
         DispatchQueue.main.async {
             self.remoteVideoTrack = videoTrack
-            self.remoteView.renderFrame(nil)
-            self.remoteVideoTrack?.add(self.remoteView)            
+            self.remoteVideoView.renderFrame(nil)
+            self.remoteVideoTrack?.add(self.remoteVideoView)
         }
         
     }
@@ -144,11 +146,11 @@ extension WebRTCViewController: WebrtcDelegate {
             //                    print("Audio Port Error");
             //                }
             //            }
-            print("self.remoteView.frame\(self.remoteView.frame)")
+            print("self.remoteView.frame\(self.remoteVideoView.frame)")
             self.remoteVideoTrack = nil
-            self.remoteView.renderFrame(nil)
+            self.remoteVideoView.renderFrame(nil)
             self.remoteVideoTrack = remoteVideoTrack
-            self.remoteVideoTrack?.add(self.remoteView)
+            self.remoteVideoTrack?.add(self.remoteVideoView)
         }
     }
     

@@ -28,7 +28,7 @@ class WebrtcUtil: NSObject {
     var delegate:WebrtcDelegate?
     var localStream:RTCMediaStream?
     var unusedICECandidates:[RTCIceCandidate] = []
-    var initiator = false
+    var initiator = true
     
     override init() {
         super.init()
@@ -38,8 +38,8 @@ class WebrtcUtil: NSObject {
         configuration.iceServers = [iceServer]
         configuration.sdpSemantics = RTCSdpSemantics.unifiedPlan
         configuration.certificate = RTCCertificate.generate(withParams: ["expires":10000,"name":"RSASSA-PKCS1-v1_5"])
-        //let constraints = RTCMediaConstraints.init(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: ["DtlsSrtpKeyAgreement" : "true"])
-        let constraints = RTCMediaConstraints.init(mandatoryConstraints: nil, optionalConstraints: nil)
+        let constraints = RTCMediaConstraints.init(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: ["DtlsSrtpKeyAgreement" : "true"])
+        //let constraints = RTCMediaConstraints.init(mandatoryConstraints: nil, optionalConstraints: nil)
         peerConnection = peerConnectionFactory?.peerConnection(with: configuration, constraints: constraints, delegate: self)
     }
     
@@ -47,9 +47,10 @@ class WebrtcUtil: NSObject {
         
         print("addLocalMediaStream")
 
-        
         videoSource = self.peerConnectionFactory?.videoSource()
         localVideoTrack = self.peerConnectionFactory?.videoTrack(with: self.videoSource!, trackId: "ARDAMSv0")
+        //localAudioTrack = self.peerConnectionFactory?.audioTrack(withTrackId: "ARDAMSa0")
+        
 //        localStream = peerConnectionFactory?.mediaStream(withStreamId: "ARDAMS")
 //        localStream?.addVideoTrack(localVideoTrack!)
 //        peerConnection?.add(localStream!)
@@ -125,6 +126,7 @@ class WebrtcUtil: NSObject {
     
     func setICECandidates(iceCandidate:RTCIceCandidate){
         DispatchQueue.main.async {
+            print("self.peerConnection\(String(describing: self.peerConnection))")
             self.peerConnection?.add(iceCandidate)
         }
     }

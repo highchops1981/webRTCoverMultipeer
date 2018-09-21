@@ -24,6 +24,11 @@
 		691640F8214D754F00EAF8C6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691640F7214D754F00EAF8C6 /* CoreVideo.framework */; };
 		691640FA214D75C000EAF8C6 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691640F9214D75C000EAF8C6 /* VideoToolbox.framework */; };
 		691640FC214D760E00EAF8C6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691640FB214D760E00EAF8C6 /* SystemConfiguration.framework */; };
+		69A2EA3A2153A7F100CC4468 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A2EA392153A7F100CC4468 /* libresolv.tbd */; };
+		69A2EA3C2153AA7600CC4468 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A2EA3B2153AA7600CC4468 /* Security.framework */; };
+		69A2EA3E2153AA8300CC4468 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A2EA3D2153AA8300CC4468 /* CoreGraphics.framework */; };
+		69A2EA402153AA8F00CC4468 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A2EA3F2153AA8F00CC4468 /* CoreMedia.framework */; };
+		69A2EA422153AA9D00CC4468 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A2EA412153AA9D00CC4468 /* CoreAudio.framework */; };
 		6ECFFBF0610232DE63D1BBDC /* Pods_webRTCoverMultipeer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E356102A8897A4FEB66A43CD /* Pods_webRTCoverMultipeer.framework */; };
 		BE719DE0339F81EB1FFB4BBF /* Pods_webRTCoverMultipeerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B96CC01CA6793CDC245B2C5 /* Pods_webRTCoverMultipeerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +78,11 @@
 		691640F7214D754F00EAF8C6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		691640F9214D75C000EAF8C6 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		691640FB214D760E00EAF8C6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		69A2EA392153A7F100CC4468 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		69A2EA3B2153AA7600CC4468 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		69A2EA3D2153AA8300CC4468 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		69A2EA3F2153AA8F00CC4468 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		69A2EA412153AA9D00CC4468 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		8D394DDB2B767082804C16AC /* Pods_webRTCoverMultipeerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webRTCoverMultipeerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21E6721B7F2B62A081B6729 /* Pods-webRTCoverMultipeerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webRTCoverMultipeerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-webRTCoverMultipeerUITests/Pods-webRTCoverMultipeerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E356102A8897A4FEB66A43CD /* Pods_webRTCoverMultipeer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webRTCoverMultipeer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +95,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69A2EA422153AA9D00CC4468 /* CoreAudio.framework in Frameworks */,
+				69A2EA402153AA8F00CC4468 /* CoreMedia.framework in Frameworks */,
+				69A2EA3E2153AA8300CC4468 /* CoreGraphics.framework in Frameworks */,
+				69A2EA3C2153AA7600CC4468 /* Security.framework in Frameworks */,
+				69A2EA3A2153A7F100CC4468 /* libresolv.tbd in Frameworks */,
 				691640FC214D760E00EAF8C6 /* SystemConfiguration.framework in Frameworks */,
 				691640FA214D75C000EAF8C6 /* VideoToolbox.framework in Frameworks */,
 				691640F8214D754F00EAF8C6 /* CoreVideo.framework in Frameworks */,
@@ -186,6 +201,11 @@
 		A553F21B81E73C67F7BBDE1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69A2EA412153AA9D00CC4468 /* CoreAudio.framework */,
+				69A2EA3F2153AA8F00CC4468 /* CoreMedia.framework */,
+				69A2EA3D2153AA8300CC4468 /* CoreGraphics.framework */,
+				69A2EA3B2153AA7600CC4468 /* Security.framework */,
+				69A2EA392153A7F100CC4468 /* libresolv.tbd */,
 				691640FB214D760E00EAF8C6 /* SystemConfiguration.framework */,
 				691640F9214D75C000EAF8C6 /* VideoToolbox.framework */,
 				691640F7214D754F00EAF8C6 /* CoreVideo.framework */,
