@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,14 +28,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nk-2S-CCB">
-                                        <rect key="frame" x="66" y="30.5" width="93" height="30"/>
+                                        <rect key="frame" x="65.5" y="30.5" width="93" height="30"/>
                                         <state key="normal" title="browsing開始"/>
                                         <connections>
                                             <action selector="pushBrowsingBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NbI-a1-z1q"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rm-wh-Pmd">
-                                        <rect key="frame" x="59" y="70.5" width="107" height="30"/>
+                                        <rect key="frame" x="58.5" y="70.5" width="107" height="30"/>
                                         <state key="normal" title="advertising開始"/>
                                         <connections>
                                             <action selector="pushAdvertisingBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qjy-gd-a8P"/>
@@ -52,6 +52,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="advertiseBtn" destination="7rm-wh-Pmd" id="5gd-0t-HqZ"/>
+                        <outlet property="browsingBtn" destination="7nk-2S-CCB" id="Za2-tV-aoE"/>
                         <segue destination="AXS-0T-HuS" kind="show" identifier="toNextPage" id="F5H-7f-bON"/>
                     </connections>
                 </viewController>
@@ -70,14 +72,14 @@
                                 <rect key="frame" x="0.0" y="467" width="76" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhk-Tf-hpL">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhk-Tf-hpL">
                                         <rect key="frame" x="10" y="0.0" width="56" height="30"/>
                                         <state key="normal" title="connect"/>
                                         <connections>
                                             <action selector="pushConnectBtn:" destination="AXS-0T-HuS" eventType="touchUpInside" id="LPU-f4-LfX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dF-4P-g6h">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dF-4P-g6h">
                                         <rect key="frame" x="0.0" y="30" width="76" height="30"/>
                                         <state key="normal" title="disconnect"/>
                                         <connections>
@@ -89,7 +91,7 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JPu-Hm-mjc">
                                 <rect key="frame" x="0.0" y="29" width="339" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39A-mH-9ZD" customClass="RTCCameraPreviewView">
                                 <rect key="frame" x="135" y="457" width="240" height="128"/>
@@ -97,7 +99,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.4480817594" blue="0.38838574939999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="AYe-gW-9TS"/>
                     </view>
                     <connections>

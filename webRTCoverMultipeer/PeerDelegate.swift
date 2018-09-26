@@ -97,7 +97,7 @@ class PeerUtil:NSObject {
         
     }
     
-    func browsering() {
+    func browsing() {
         
         session?.delegate = self
         browser?.delegate = self

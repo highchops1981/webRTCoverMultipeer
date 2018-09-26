@@ -29,6 +29,11 @@ class WebRTCViewController: UIViewController {
         peerUtil = PeerUtil.app()
         peerUtil.delegate = self
         
+        remoteVideoView = RTCMTLVideoView.init(frame: CGRect.zero)
+        remoteVideoView?.bounds = remoteView.bounds
+        
+        remoteView.addSubview(remoteVideoView!)
+        
     }
 
     @IBAction func pushConnectBtn(_ sender: Any) {
@@ -44,10 +49,7 @@ class WebRTCViewController: UIViewController {
 extension WebRTCViewController: PeerDelegate {
     func receivedOffer2(dictionary:[String: Any]) {
         let sdp = dictionary["sdp"] as! String
-        print("pass4\(sdp)")
-        print("RTCSdpType.offer\(RTCSdpType.offer)")
         let offerSDP = RTCSessionDescription.init(type: RTCSdpType.offer, sdp: sdp)
-        print("pass3\(offerSDP)")
         self.webrtcUtil.remoteSDP = offerSDP
         self.webrtcUtil.createAnswer()
     }
@@ -127,14 +129,13 @@ extension WebRTCViewController: WebrtcDelegate {
         print("videoTrack\(videoTrack)")
         DispatchQueue.main.async {
             self.remoteVideoTrack = videoTrack
-            self.remoteVideoView.renderFrame(nil)
-            self.remoteVideoTrack?.add(self.remoteVideoView)
+            self.remoteVideoView?.renderFrame(nil)
+            self.remoteVideoTrack?.add(self.remoteVideoView!)
         }
         
     }
 
     func remoteStreamAvailable(stream: RTCMediaStream) {
-        print("remoteStreamAvailable\(stream.videoTracks.count)");
         DispatchQueue.main.async {
             let remoteVideoTrack = stream.videoTracks.first
             //            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -146,11 +147,10 @@ extension WebRTCViewController: WebrtcDelegate {
             //                    print("Audio Port Error");
             //                }
             //            }
-            print("self.remoteView.frame\(self.remoteVideoView.frame)")
             self.remoteVideoTrack = nil
-            self.remoteVideoView.renderFrame(nil)
+            self.remoteVideoView?.renderFrame(nil)
             self.remoteVideoTrack = remoteVideoTrack
-            self.remoteVideoTrack?.add(self.remoteVideoView)
+            self.remoteVideoTrack?.add(self.remoteVideoView!)
         }
     }
     

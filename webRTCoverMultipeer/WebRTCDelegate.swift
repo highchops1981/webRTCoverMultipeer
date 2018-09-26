@@ -28,38 +28,39 @@ class WebrtcUtil: NSObject {
     var delegate:WebrtcDelegate?
     var localStream:RTCMediaStream?
     var unusedICECandidates:[RTCIceCandidate] = []
-    var initiator = true
+    var initiator = false
     
     override init() {
         super.init()
         peerConnectionFactory = RTCPeerConnectionFactory.init()
         let iceServer = RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302"])
         let configuration = RTCConfiguration.init()
+        //configuration.iceServers = [iceServer]
         configuration.iceServers = [iceServer]
         configuration.sdpSemantics = RTCSdpSemantics.unifiedPlan
         configuration.certificate = RTCCertificate.generate(withParams: ["expires":10000,"name":"RSASSA-PKCS1-v1_5"])
         let constraints = RTCMediaConstraints.init(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: ["DtlsSrtpKeyAgreement" : "true"])
-        //let constraints = RTCMediaConstraints.init(mandatoryConstraints: nil, optionalConstraints: nil)
+//        let constraints = RTCMediaConstraints.init(mandatoryConstraints: nil, optionalConstraints: nil)
         peerConnection = peerConnectionFactory?.peerConnection(with: configuration, constraints: constraints, delegate: self)
+        
+        let app = UIApplication.shared.delegate as! AppDelegate
+        initiator = app.initiator
+
     }
     
     func addLocalMediaStream(){
         
-        print("addLocalMediaStream")
-
         videoSource = self.peerConnectionFactory?.videoSource()
-        localVideoTrack = self.peerConnectionFactory?.videoTrack(with: self.videoSource!, trackId: "ARDAMSv0")
+        localVideoTrack = self.peerConnectionFactory?.videoTrack(with: self.videoSource!, trackId: "MARDAMSv0")
         //localAudioTrack = self.peerConnectionFactory?.audioTrack(withTrackId: "ARDAMSa0")
         
 //        localStream = peerConnectionFactory?.mediaStream(withStreamId: "ARDAMS")
 //        localStream?.addVideoTrack(localVideoTrack!)
 //        peerConnection?.add(localStream!)
-        peerConnection?.add(localVideoTrack!, streamIds: ["ARDAMS"])
+        peerConnection?.add(localVideoTrack!, streamIds: ["MARDAMS"])
         
         for transceiver in (peerConnection?.transceivers)! {
-            print("pass10")
             if transceiver.mediaType == RTCRtpMediaType.video {
-                print("pass10")
                 delegate?.setRemoteVideoTrack(videoTrack: transceiver.receiver.track as! RTCVideoTrack)
             }
         }
@@ -75,15 +76,16 @@ class WebrtcUtil: NSObject {
             }
         }
         
-        if self.initiator {
+        if initiator {
 
             self.createOffer()
 
         } else {
 
-            print("self.remoteSDP\(String(describing: self.remoteSDP))")
-            self.peerConnection!.setRemoteDescription(self.remoteSDP!) { (error) in
+            self.peerConnection!.setRemoteDescription(self.remoteSDP!) { [weak self] (error) in
+                guard let self = self else {return}
                 self.setSessionDescription(error: error)
+                self.addUnusedIceCandidates()
             }
 
         }
@@ -101,8 +103,9 @@ class WebrtcUtil: NSObject {
     
     func createOffer(){
         let offerContratints = RTCMediaConstraints(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: nil)
-        self.peerConnection?.offer(for: offerContratints) { (sdp, error) in
-            self.peerConnection(didCreateSessionDescription: sdp, error: error)
+        self.peerConnection?.offer(for: offerContratints) { [weak self] (sdp, error) in
+            guard let self = self else {return}
+            self.peerConnection(peer:self.peerConnection!,didCreateSessionDescription: sdp, error: error)
         }
     }
     
@@ -117,68 +120,77 @@ class WebrtcUtil: NSObject {
     
     func setAnswerSDP(){
         DispatchQueue.main.async {
-            self.peerConnection!.setRemoteDescription(self.remoteSDP!) { (error) in
+            print("setAnswerSDP")
+            self.peerConnection!.setRemoteDescription(self.remoteSDP!) { [weak self] (error) in
+                guard let self = self else {return}
                 self.setSessionDescription(error: error)
+                self.addUnusedIceCandidates()
             }
-            self.addUnusedIceCandidates()
+            
         }
     }
     
     func setICECandidates(iceCandidate:RTCIceCandidate){
-        DispatchQueue.main.async {
-            print("self.peerConnection\(String(describing: self.peerConnection))")
-            self.peerConnection?.add(iceCandidate)
+        if peerConnection?.remoteDescription != nil {
+            DispatchQueue.main.async {
+                print("add iceCandidate")
+                self.peerConnection?.add(iceCandidate)
+            }
+        } else {
+            print("store iceCandidate")
+            unusedICECandidates.append(iceCandidate)
         }
     }
     
     func addUnusedIceCandidates(){
-        for (iceCandidate) in self.unusedICECandidates{
-            print("added unused ices")
+        for (iceCandidate) in unusedICECandidates{
+            print("add iceCandidate")
             self.peerConnection?.add(iceCandidate)
         }
-        self.unusedICECandidates = []
+        unusedICECandidates = []
     }
     
-    func peerConnection(didCreateSessionDescription sdp: RTCSessionDescription!, error: Error!) {
-        print("didCreateSessionDescription")
-        if let er = error {
-            print(er.localizedDescription)
-        }
-        if(sdp == nil) {
-            print("Problem creating SDP - \(sdp)")
-        } else {
-            
-            print("SDP created -: \(sdp)")
-        }
-        self.localSDP = sdp
-        self.peerConnection?.setLocalDescription(sdp) { (error) in
-            if error != nil {
-                print("setLocalDescription error\(String(describing: error))")
-                return
+    func peerConnection(peer:RTCPeerConnection, didCreateSessionDescription sdp: RTCSessionDescription!, error: Error!) {
+        DispatchQueue.main.async {
+            if let er = error {
+                print(er.localizedDescription)
+            }
+            if(sdp == nil) {
+                print("Problem creating SDP - \(String(describing: sdp))")
             } else {
-                if (self.initiator){
-                    self.delegate?.offerSDPCreated(sdp: sdp)
-                }
-                else{
-                    self.delegate?.answerSDPCreated(sdp: sdp)
+                
+                print("SDP created -: \(String(describing: sdp))")
+            }
+            self.localSDP = sdp
+            peer.setLocalDescription(sdp) { [weak self] (error) in
+                guard let self = self else {return}
+                if error != nil {
+                    print("setLocalDescription error\(String(describing: error))")
+                    return
+                } else {
+                    if (self.initiator){
+                        self.delegate?.offerSDPCreated(sdp: sdp)
+                    }
+                    else{
+                        self.delegate?.answerSDPCreated(sdp: sdp)
+                    }
                 }
             }
         }
-        
     }
     
     func setSessionDescription(error: Error!) {
-        print("didSetSessionDescriptionWithError")
         if error != nil{
-            print("sdp error \(error.localizedDescription) \(error)")
+            print("sdp error \(error.localizedDescription) \(String(describing: error))")
         }
         else{
             print("SDP set success")
             if initiator == false && self.localSDP == nil{
                 
                 let answerConstraints = RTCMediaConstraints(mandatoryConstraints: ["OfferToReceiveAudio":"false","OfferToReceiveVideo":"true"], optionalConstraints: nil)
-                self.peerConnection!.answer(for: answerConstraints) { (sdp, error) in
-                    self.peerConnection(didCreateSessionDescription: sdp, error: error)
+                self.peerConnection!.answer(for: answerConstraints) { [weak self] (sdp, error) in
+                    guard let self = self else {return}
+                    self.peerConnection(peer:self.peerConnection!,didCreateSessionDescription: sdp, error: error)
                 }
             }
         }
