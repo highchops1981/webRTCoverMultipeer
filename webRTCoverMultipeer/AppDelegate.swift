@@ -10,6 +10,8 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    //https://webrtc.googlesource.com/src/+/master/examples/objc/AppRTCMobile
 
     var window: UIWindow?
 
@@ -21,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         peerUtil = PeerUtil()
-        peerUtil?.setting(displayName: "peerName2", serviceType: "peerType")
+        peerUtil?.setting(displayName: "peerNameTrue", serviceType: "peerType")
         
         return true
     }

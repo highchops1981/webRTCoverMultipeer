@@ -48,6 +48,14 @@ class WebrtcUtil: NSObject {
 
     }
     
+    //
+    func addData() {
+        print("addData")
+        let configuration = RTCDataChannelConfiguration.init()
+        peerConnection?.dataChannel(forLabel: "sample", configuration: configuration)
+        
+    }
+    
     func addLocalMediaStream(){
         
         videoSource = self.peerConnectionFactory?.videoSource()
@@ -199,6 +207,8 @@ class WebrtcUtil: NSObject {
     // Called when the data channel state has changed.
     func channelDidChangeState(channel:RTCDataChannel){
         
+        print("pass2")
+        
     }
     
     func channel(channel: RTCDataChannel!, didReceiveMessageWithBuffer buffer: RTCDataBuffer!) {
@@ -207,6 +217,17 @@ class WebrtcUtil: NSObject {
     
     func disconnect(){
         self.peerConnection?.close()
+    }
+}
+
+//
+extension WebrtcUtil: RTCDataChannelDelegate {
+    func dataChannelDidChangeState(_ dataChannel: RTCDataChannel) {
+        
+    }
+    
+    func dataChannel(_ dataChannel: RTCDataChannel, didReceiveMessageWith buffer: RTCDataBuffer) {
+        
     }
 }
 
@@ -253,7 +274,7 @@ extension WebrtcUtil: RTCPeerConnectionDelegate {
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
-        print("PEER CONNECTION:- didOpen dataChannel")
+        print("PEER CONNECTION:- didOpen dataChannel\(dataChannel.readyState)")
     }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
@@ -262,6 +283,11 @@ extension WebrtcUtil: RTCPeerConnectionDelegate {
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
         print("PEER CONNECTION:- ICE Connection Changed \(newState.rawValue)")
+        
+        if newState.rawValue == 3 {
+            addData()
+        }
+        
     }
     
 }
